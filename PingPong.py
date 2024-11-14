@@ -7,7 +7,7 @@ pygame.init()
 # Ukuran layar
 WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Ping Pong Game")
+pygame.display.set_caption("PingPong Game")
 
 # Warna
 WHITE = (255, 255, 255)
@@ -34,6 +34,7 @@ ball_speed_y = 5
 left_score = 0
 right_score = 0
 font = pygame.font.Font(None, 50)
+game_over_font = pygame.font.Font(None, 100)
 
 # Suara
 pygame.mixer.init()
@@ -59,6 +60,18 @@ def reset_ball():
     global ball_speed_x, ball_speed_y
     ball_speed_x *= -1
     ball_speed_y *= -1
+
+# Fungsi untuk menampilkan pesan Game Over
+def display_game_over(winner):
+    screen.fill(BLACK)
+    game_over_text = game_over_font.render("GAME OVER", True, WHITE)
+    winner_text = font.render(f"Winner: {winner}", True, WHITE)
+    screen.blit(game_over_text, (WIDTH // 2 - game_over_text.get_width() // 2, HEIGHT // 2 - 100))
+    screen.blit(winner_text, (WIDTH // 2 - winner_text.get_width() // 2, HEIGHT // 2 + 50))
+    pygame.display.flip()
+    pygame.time.delay(3000)
+    pygame.quit()
+    sys.exit()
 
 # Game loop
 running = True
@@ -99,6 +112,12 @@ while running:
     if ball.right >= WIDTH:
         left_score += 1
         reset_ball()
+
+    # Cek kondisi Game Over
+    if left_score >= 10:
+        display_game_over("Left Player")
+    if right_score >= 10:
+        display_game_over("Right Player")
 
     # Gambar elemen
     draw_elements()

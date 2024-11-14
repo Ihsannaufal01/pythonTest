@@ -205,6 +205,38 @@ if ball.colliderect(left_paddle) or ball.colliderect(right_paddle):
     paddle_bounce_sound.play()
 ```
 Bola hanya memainkan suara `paddle_bounce_sound` saat menyentuh paddle kiri atau kanan.
-Dinding Tidak Memainkan Suara:
 
-Bola yang memantul dari dinding atas atau bawah tidak memainkan suara.
+Penentuan Game Over:
+
+```
+if left_score >= 10:
+    display_game_over("Left Player")
+if right_score >= 10:
+    display_game_over("Right Player")
+```
+Jika skor salah satu pemain mencapai 10, fungsi `display_game_over()` akan dipanggil.
+
+Fungsi `display_game_over()`:
+
+```
+def display_game_over(winner):
+    screen.fill(BLACK)
+    game_over_text = game_over_font.render("GAME OVER", True, WHITE)
+    winner_text = font.render(f"Winner: {winner}", True, WHITE)
+    screen.blit(game_over_text, (WIDTH // 2 - game_over_text.get_width() // 2, HEIGHT // 2 - 100))
+    screen.blit(winner_text, (WIDTH // 2 - winner_text.get_width() // 2, HEIGHT // 2 + 50))
+    pygame.display.flip()
+    pygame.time.delay(3000)
+    pygame.quit()
+    sys.exit()
+```
+Menampilkan pesan Game Over dan pemenangnya.
+<br>
+Setelah menampilkan pesan selama 3 detik, program akan berhenti.
+<br>
+Font untuk Game Over:
+
+```
+game_over_font = pygame.font.Font(None, 100)
+```
+Font yang lebih besar digunakan untuk menampilkan pesan Game Over.
