@@ -10,9 +10,9 @@
 import pygame
 import sys
 ```
-<strong>pygame</strong>: Pustaka untuk membuat game.
+`pygame`: Pustaka untuk membuat game.
 <br>
-<strong>sys</strong>: Digunakan untuk keluar dari program dengan sys.exit().
+`sys`: Digunakan untuk keluar dari program dengan sys.exit().
 ```
 pygame.init()
 ```
@@ -22,11 +22,11 @@ WIDTH, HEIGHT = 800, 600
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Ping Pong Game")
 ```
-<strong>WIDTH</strong> dan <strong>HEIGHT</strong>: Ukuran layar game.
+`WIDTH` dan `HEIGHT`: Ukuran layar game.
 <br>
-<strong>pygame.display.set_mode()</strong>: Membuat jendela dengan ukuran tertentu.
+`pygame.display.set_mode()`: Membuat jendela dengan ukuran tertentu.
 <br>
-<strong>pygame.display.set_caption()</strong>: Menetapkan judul jendela.
+`pygame.display.set_caption()`: Menetapkan judul jendela.
 
 <!-- 2. Definisi Warna -->
 ```
@@ -43,11 +43,11 @@ paddle_speed = 7
 left_paddle = pygame.Rect(30, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
 right_paddle = pygame.Rect(WIDTH - 40, HEIGHT // 2 - PADDLE_HEIGHT // 2, PADDLE_WIDTH, PADDLE_HEIGHT)
 ```
-<strong>PADDLE_WIDTH</strong> dan <strong>PADDLE_HEIGHT</strong>: Dimensi paddle.
+`PADDLE_WIDTH` dan `PADDLE_HEIGHT`: Dimensi paddle.
 <br>
-<strong>paddle_speed</strong>: Kecepatan paddle bergerak.
+`paddle_speed`: Kecepatan paddle bergerak.
 <br>
-<strong>pygame.Rect</strong>: Membuat objek persegi panjang untuk paddle kiri dan kanan.
+`pygame.Rect`: Membuat objek persegi panjang untuk paddle kiri dan kanan.
 
 ```
 BALL_SIZE = 20
@@ -55,11 +55,11 @@ ball = pygame.Rect(WIDTH // 2 - BALL_SIZE // 2, HEIGHT // 2 - BALL_SIZE // 2, BA
 ball_speed_x = 5
 ball_speed_y = 5
 ```
-<strong>BALL_SIZE</strong>: Ukuran bola.
+`BALL_SIZE`: Ukuran bola.
 <br>
-<strong>pygame.Rect</strong>: Membuat objek persegi panjang untuk bola.
+`pygame.Rect`: Membuat objek persegi panjang untuk bola.
 <br>
-<strong>ball_speed_x</strong> dan <strong>ball_speed_y</strong>: Kecepatan bola pada sumbu X dan Y.
+`ball_speed_x` dan `ball_speed_y`: Kecepatan bola pada sumbu X dan Y.
 <!-- 4. Skor dan Font -->
 
 ```
@@ -67,9 +67,9 @@ left_score = 0
 right_score = 0
 font = pygame.font.Font(None, 50)
 ```
-<strong>left_score</strong> dan <strong>right_score</strong>: Variabel untuk mencatat skor kedua pemain.
+`left_score` dan `right_score`: Variabel untuk mencatat skor kedua pemain.
 <br>
-<strong>pygame.font.Font</strong>: Digunakan untuk membuat teks pada layar.
+`pygame.font.Font`: Digunakan untuk membuat teks pada layar.
 <!-- 5. Fungsi untuk Menggambar Elemen -->
 
 ```
@@ -85,17 +85,17 @@ def draw_elements():
     screen.blit(left_text, (WIDTH // 4, 20))
     screen.blit(right_text, (WIDTH * 3 // 4, 20))
 ```
-<strong>screen.fill()</strong>: Mengisi layar dengan warna hitam.
+`screen.fill()`: Mengisi layar dengan warna hitam.
 <br>
-<strong>pygame.draw.rect()</strong>: Menggambar paddle kiri dan kanan.
+`pygame.draw.rect()`: Menggambar paddle kiri dan kanan.
 <br>
-<strong>pygame.draw.ellipse()</strong>: Menggambar bola.
+`pygame.draw.ellipse()`: Menggambar bola.
 <br>
-<strong>pygame.draw.aaline()</strong>: Menggambar garis tengah layar.
+`pygame.draw.aaline()`: Menggambar garis tengah layar.
 <br>
-<strong>font.render()</strong>: Membuat teks untuk skor.
+`font.render()`: Membuat teks untuk skor.
 <br>
-<strong>screen.blit()</strong>: Menampilkan teks skor ke layar.
+`screen.blit()`: Menampilkan teks skor ke layar.
 <!-- 6. Fungsi Reset Bola -->
 
 ```
@@ -105,19 +105,19 @@ def reset_ball():
     ball_speed_x *= -1
     ball_speed_y *= -1
 ```
-<strong>ball.center</strong>: Mengatur posisi bola kembali ke tengah layar.
+`ball.center`: Mengatur posisi bola kembali ke tengah layar.
 <br>
-<strong>ball_speed_x</strong>, <strong>dan ball_speed_y</strong>: Membalik arah bola saat di-reset.
+`ball_speed_x`, `dan ball_speed_y`: Membalik arah bola saat di-reset.
 <!-- 7. Game Loop -->
-Event Handling
+<!-- Event Handling -->
 ```
 for event in pygame.event.get():
     if event.type == pygame.QUIT:
         running = False
 ```
-<strong>pygame.event.get()</strong>: Mengecek event seperti tombol keluar.
+`pygame.event.get()`: Mengecek event seperti tombol keluar.
 <br>
-<strong>pygame.QUIT</strong>: Event saat pemain menutup game.
+`pygame.QUIT`: Event saat pemain menutup game.
 Input Pemain
 
 ```
@@ -131,11 +131,11 @@ if keys[pygame.K_UP] and right_paddle.top > 0:
 if keys[pygame.K_DOWN] and right_paddle.bottom < HEIGHT:
     right_paddle.y += paddle_speed
 ```
-<strong>pygame.key.get_pressed()</strong>: Mengecek tombol yang ditekan.
+`pygame.key.get_pressed()`: Mengecek tombol yang ditekan.
 <br>
 Tombol Kontrol:
 <br>
-<strong>W / S</strong>: Menggerakkan paddle kiri.
+`W / S`: Menggerakkan paddle kiri.
 <br>
 <strong>Panah Atas</strong> / <strong>Panah Bawah</strong>: Menggerakkan paddle kanan.
 Gerakan Bola
@@ -170,7 +170,7 @@ if ball.right >= WIDTH:
 ```
 Menambah skor pemain lawan jika bola melewati paddle.
 <br>
-Memanggil fungsi <strong>reset_ball()</strong> untuk mengembalikan bola ke tengah.
+Memanggil fungsi `reset_ball()` untuk mengembalikan bola ke tengah.
 Gambar Elemen dan Update Layar
 
 ```
@@ -178,16 +178,33 @@ draw_elements()
 pygame.display.flip()
 clock.tick(FPS)
 ```
-<strong>draw_elements()</strong>: Memanggil fungsi untuk menggambar semua elemen.
+`draw_elements()`: Memanggil fungsi untuk menggambar semua elemen.
 <br>
-<strong>pygame.display.flip()</strong>: Memperbarui layar.
+`pygame.display.flip()`: Memperbarui layar.
 <br>
-<strong>clock.tick(FPS)</strong>: Mengatur kecepatan game (60 FPS).
+`clock.tick(FPS)`: Mengatur kecepatan game (60 FPS).
 <!-- 8. Keluar dari Game -->
 
 ```
 pygame.quit()
 sys.exit()
 ```
-<strong>pygame.quit()</strong>: Menutup semua modul Pygame.
-<strong>ys.exit()</strong>: Menghentikan program.
+`pygame.quit()`: Menutup semua modul Pygame.
+<br>
+`ys.exit()`: Menghentikan program.
+
+```
+paddle_bounce_sound = pygame.mixer.Sound("paddle_bounce.wav")
+```
+File suara dimuat ke dalam program. Pastikan file suara `paddle_bounce.wav` ada di direktori yang sama.
+Memainkan Suara:
+
+```
+if ball.colliderect(left_paddle) or ball.colliderect(right_paddle):
+    ball_speed_x *= -1
+    paddle_bounce_sound.play()
+```
+Bola hanya memainkan suara `paddle_bounce_sound` saat menyentuh paddle kiri atau kanan.
+Dinding Tidak Memainkan Suara:
+
+Bola yang memantul dari dinding atas atau bawah tidak memainkan suara.
